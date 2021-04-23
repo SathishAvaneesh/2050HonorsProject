@@ -74,9 +74,10 @@ class parings:
     def countCorrectPairings(self, thoughtPairings):
         numberCorrect = 0
         for items in thoughtPairings: 
-            person1 = items[0]
-            person2 = items[1]
-            if self._setPairings[person1]._name == person2: 
+            person1Name = items[0]
+            person1Pair = items[1]
+            person1 = self.findCharecter(person1Name)
+            if person1.truthBoothName(person1Pair): 
                 numberCorrect += 1
         return numberCorrect
     
@@ -98,13 +99,13 @@ class theGame:
     # The algorithms comes up with 8 pairs randomly, and if all 8 pairs do not perfectly match with the matches proven by the love algorithm, then all 8 pairs will re randomize and try again 
     # This algorithm is the slowest and takes an insanley long time to run because the chances of perfect matchmaking are very slim. We are not gods here only computerScientists :)
     def algorithm1(self): 
-        proposed = self._p1.randomPairing()
+        proposed = self._p1.randomPairing(16)
         numberOfWeeks = 0
         correctPairings = 0
         while correctPairings < 8: 
             numberOfWeeks += 1
             correctPairings = self._p1.countCorrectPairings(proposed)
-            proposed = proposed = self._p1.randomPairing()
+            proposed = self._p1.randomPairing(16)
         return "Game Over, Rounds Taken: {}".format(numberOfWeeks)
 
     #The following algorithm has an insanley long run time and will not produce results in a timley fashion, however if let run results may appear 
@@ -208,6 +209,12 @@ class theGame:
             people.remove(people[counter - 1])
             counter = 1
         return numberOfWeeks
+
+if __name__ == '__main__': 
+    g1 = theGame()
+    print(g1.algorithm1())
+    print("done")
+
             
 
 
