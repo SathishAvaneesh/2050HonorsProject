@@ -49,6 +49,6 @@ def plotAlg5(numberOfTimes):
 
 
 if __name__ == '__main__': 
-    plotAlg5(1000)
+    plotAlg1(1000)
 
 

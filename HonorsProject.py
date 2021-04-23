@@ -102,11 +102,11 @@ class theGame:
         proposed = self._p1.randomPairing(16)
         numberOfWeeks = 0
         correctPairings = 0
-        while correctPairings < 8: 
+        while correctPairings < 7: 
             numberOfWeeks += 1
-            correctPairings = self._p1.countCorrectPairings(proposed)
             proposed = self._p1.randomPairing(16)
-        return "Game Over, Rounds Taken: {}".format(numberOfWeeks)
+            correctPairings = self._p1.countCorrectPairings(proposed)
+        return numberOfWeeks
 
     #The following algorithm has an insanley long run time and will not produce results in a timley fashion, however if let run results may appear 
     # This algorithm takes algorithm1 to the next level 
